@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root to: 'users#index', via: :get
+  root to: 'pages#home', via: :get
   get 'auth/facebook', as: "auth_provider"
-  get 'auth/facebook/callback', to: 'users#login'
+  get 'auth/facebook/callback', to: 'sessions#create'
+
+  get '/home', to: 'pages#home'
 end
