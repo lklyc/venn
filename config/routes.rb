@@ -5,4 +5,7 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
 
   get '/home', to: 'pages#home'
+
+  resources :polls, only: [:index, :new, :create, :show, :edit, :update]
+  
 end
