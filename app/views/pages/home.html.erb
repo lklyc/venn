@@ -2,37 +2,17 @@
   <h3>Trending today</h3>
   <br/>
   <div class="row">
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= image_tag "maplesyrup.png" %>
-        <div class="caption">
-          <h4>Do Canadians love maple syrup?</h4>
-          <p>In addition to being nice, the world also thinks Canada loves maple syrup. Do they?</p>
-          <%= link_to "View Poll", "#", class: 'btn btn-success' %>
+    <% @polls.each do |poll| %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <%= image_tag poll.image.url %>
+          <div class="caption">
+            <h4><%=poll.title%></h4>
+            <p><%=poll.blurb%></p>
+            <%= link_to "Poll Results", poll_path(poll), class: 'btn btn-success' %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= image_tag "jb.png" %>
-        <div class="caption">
-          <h4>How does Canada feel about Bieber?</h4>
-          <p>We keep hearing Canadians say they're sorry about Justin Bieber, let's settle score.</p>
-          <%= link_to "View Poll", "#", class: 'btn btn-success' %>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
-        <%= image_tag "cable.png" %>
-        <div class="caption">
-          <h4>Who still pays for cable?</h4>
-          <p>With the rise of Netflix, HBO GO and Pirate Bay, they say cable is dying. Is it actually?</p>
-          <%= link_to "View Poll", "#", class: 'btn btn-success' %>
-        </div>
-      </div>
-    </div>
+    <% end %>
   </div>
-  <h4>Do you use maple syrup once a week?</h4>
-  <%= pie_chart({"Yes" => 0.13 , "No" => 0.87 }) %>
 </div>

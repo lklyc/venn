@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     # actual login
     session[:user_id] = @user.id
 
-    redirect_to home_path
+    redirect_to root_path
 
   end
 

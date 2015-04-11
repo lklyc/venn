@@ -21,7 +21,10 @@ class PollsController < ApplicationController
   end
 
   def show
-    
+    @poll = Poll.find(params[:id])
+    if !logged_in?
+      redirect_to auth_provider_path
+    end
   end
 
   def edit
