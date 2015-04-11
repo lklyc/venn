@@ -1,3 +1,6 @@
 <div class="container">
-  <h4><%= @poll.title %></h4>
+  <h2><%= @poll.title %></h2>
+  <hr/>
+  <h4>The public has spoken:</h4>
+  <%= pie_chart @plot_data, height: "500px", colors: ["#354696", "#db4437","#f4b400","#838e91"] %>
 </div>

@@ -15,7 +15,15 @@ class SessionsController < ApplicationController
     # actual login
     session[:user_id] = @user.id
 
-    redirect_to root_path
+    if session[:poll_id]
+      # erase session[:poll_id] after use
+      # otherwise, visit page > logout > login will direct to a specific page
+      poll_id = session[:poll_id]
+      session[:poll_id] = nil
+      redirect_to poll_path(poll_id)
+    else
+      redirect_to root_path
+    end
 
   end
 

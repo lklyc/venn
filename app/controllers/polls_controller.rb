@@ -23,7 +23,23 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find(params[:id])
     if !logged_in?
+      # store poll_id so sessions controller know where to redirect after login
+      session[:poll_id] = @poll.id
       redirect_to auth_provider_path
+    end
+
+    # find number of possible answers
+    possibleAnswers = @poll.answer_hash.split(',')
+    # get all responses
+    responses = @poll.responses
+    # build chartkick hash, needs to be an instance variable for view access
+    @plot_data = []
+    possibleAnswers.each do |answer|
+      @plot_data << [answer,0]
+    end
+
+    responses.each do |response|
+      @plot_data[response.ah_index][1] += 1
     end
   end
 
