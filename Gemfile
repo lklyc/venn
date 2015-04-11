@@ -38,6 +38,7 @@ gem 'figaro'
 gem 'bootstrap-switch-rails', '~> 3.0.0'
 gem 'omniauth-facebook' # Facebook authentication
 gem "koala", "~> 1.10.0rc" # Facebook API
+gem 'chartkick'
 
 group :development, :test do
   gem 'sqlite3'

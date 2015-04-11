@@ -17,6 +17,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-switch
+//= require jsapi
+//= require chartkick
 
 
 $(document).ready(function() {
