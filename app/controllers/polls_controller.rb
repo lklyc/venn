@@ -22,11 +22,17 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find(params[:id])
+    #1. check if logged in
     if !logged_in?
       # store poll_id so sessions controller know where to redirect after login
       session[:poll_id] = @poll.id
       redirect_to auth_provider_path
     end
+
+    # 2. check if voted
+    # if not yet voted
+
+    # =========================
 
     # find number of possible answers
     possibleAnswers = @poll.answer_hash.split(',')
