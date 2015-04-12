@@ -1,14 +1,30 @@
-<div class='well'>
-  <%= form_for @response, url: {action: "create"} do |f| %>
-    <div class='control-group' >
-      <%= f.label "Choices" %>
+<div class="container">
+  
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="thumbnail">
+          <%= image_tag @poll.image.url %>
+        </div>
+      </div>
     </div>
-    <div class='control-group' > 
-      <% @poll.answers.each_with_index do |val, index| %>
-        <%= f.label "#{val}" %>
-        <%= f.radio_button("ah_index",index) %>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+      <%= form_for @response, url: {action: "create"} do |f| %>
+        <div class='control-group' >
+          <%= f.label @poll.question %>
+        </div>
+        <hr/>
+        <div class='control-group' > 
+          <% @poll.answers.each_with_index do |val, index| %>
+            <%= f.label "#{val}" %>
+            <%= f.radio_button("ah_index",index) %>
+          <% end %>
+        </div>
+        <br/>
+        <%= f.submit "See Results", class: 'btn btn-primary' %>
       <% end %>
+      </div>
     </div>
-     <%= f.submit "Create", class: 'btn btn-primary' %>
-  <% end %>
 </div>
