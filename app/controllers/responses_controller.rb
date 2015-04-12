@@ -1,37 +1,22 @@
-class ResponsesController < ApplicationController 
-def index
-      
-  end  
+class ResponsesController < ApplicationController   
 
   def new
+    @poll=Poll.find(params[:poll_id])
     @response = Response.new
   end
 
   def create
-    @response = Response.new(responses_params)
+    @poll = Poll.find(params[:poll_id])
+    @response = @poll.responses.build(params.require(:response).permit!)
+    @response.user = current_user
 
-    if @poll.save
+    if @response.save
       flash[:success] = 'Response Created'
-      redirect_to root_path
+      redirect_to poll_path(params[:poll_id])
     else
       flash[:error] = 'Failed to create Response'
       render :new
     end
-  end
-
-  def show
-    @response = Response.find(params[:id])
-    if !logged_in?
-      redirect_to auth_provider_path
-    end
-  end
-
-  def edit
-    
-  end
-
-  def update
-    
   end
 
   private
@@ -41,5 +26,4 @@ def index
   end
 
 
-end
 end

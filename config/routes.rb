@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/home', to: 'pages#home'
 
-  resources :polls, only: [:index, :new, :create, :show, :edit, :update]
-  
+  resources :polls, only: [:index, :new, :create, :show, :edit, :update] do 
+    resources :responses, only: [:create, :new, :show]
+  end
 end
