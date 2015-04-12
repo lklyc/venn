@@ -1,0 +1,14 @@
+<div class='well'>
+  <%= form_for @response, url: {action: "create"} do |f| %>
+    <div class='control-group' >
+      <%= f.label "Choices" %>
+    </div>
+    <div class='control-group' > 
+      <% @poll.answers.each_with_index do |val, index| %>
+        <%= f.label "#{val}" %>
+        <%= f.radio_button("ah_index",index) %>
+      <% end %>
+    </div>
+     <%= f.submit "Create", class: 'btn btn-primary' %>
+  <% end %>
+</div>

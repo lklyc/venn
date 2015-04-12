@@ -29,10 +29,12 @@ class PollsController < ApplicationController
       redirect_to auth_provider_path
     end
 
-    # 2. check if voted
-    # if not yet voted
 
-    # =========================
+    if !voted?
+      redirect_to new_poll_response_path(params[:id])
+    end
+
+
 
     # find number of possible answers
     possibleAnswers = @poll.answer_hash.split(',')

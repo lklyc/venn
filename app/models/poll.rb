@@ -4,5 +4,7 @@ class Poll < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   #serialize :answer_hash, JSON
-
+  def answers
+    self.answer_hash.split(',')
+  end
 end
